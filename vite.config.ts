@@ -5,7 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: './',
+    base: '/Buy-USA-Gmail/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
