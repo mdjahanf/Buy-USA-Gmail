@@ -116,6 +116,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, services, darkMode }
               href="https://t.me/EgSupport24" 
               target="_blank" 
               rel="noopener noreferrer"
+              aria-label="Contact Telegram Support @EgSupport24"
               className="flex items-center gap-2 text-gray-300 hover:text-red-400 transition-colors group"
             >
               <span className="w-8 h-8 rounded-lg bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-blue-400 group-hover:scale-105 transition-transform">
@@ -129,6 +130,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, services, darkMode }
               href="https://wa.me/13073939979" 
               target="_blank" 
               rel="noopener noreferrer"
+              aria-label="Contact WhatsApp Desk at +1 (307) 393-9979"
               className="flex items-center gap-2 text-gray-300 hover:text-green-400 transition-colors group"
             >
               <span className="w-8 h-8 rounded-lg bg-green-500/10 border border-green-500/20 flex items-center justify-center text-green-400 group-hover:scale-105 transition-transform">
@@ -140,6 +142,7 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, services, darkMode }
 
             <a 
               href="mailto:smmbuy2022@gmail.com" 
+              aria-label="Send direct email to smmbuy2022@gmail.com"
               className="flex items-center gap-2 text-gray-300 hover:text-red-400 transition-colors group"
             >
               <span className="w-8 h-8 rounded-lg bg-red-500/10 border border-red-500/20 flex items-center justify-center text-red-400 group-hover:scale-105 transition-transform">
@@ -147,6 +150,19 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, services, darkMode }
               </span>
               <span>Direct Email: <strong className="text-white">smmbuy2022@gmail.com</strong></span>
             </a>
+
+            <div className="flex items-center gap-2 text-gray-400 text-xs pt-1">
+              <Globe className="w-4 h-4 text-gray-500 flex-shrink-0" />
+              <span>USA Address: <strong className="text-gray-300">30 N Gould St Ste R, Sheridan, WY 82801, USA</strong></span>
+            </div>
+
+            {/* Social Profiles for Local SEO & OpenGraph Verification */}
+            <div className="flex items-center gap-3 pt-2">
+              <span className="text-xs text-gray-500 font-semibold">Official Channels:</span>
+              <a href="https://facebook.com/buyusagmail" target="_blank" rel="noopener noreferrer" aria-label="Facebook Page" className="text-gray-400 hover:text-blue-400 transition-colors text-xs font-bold bg-gray-800 px-2 py-1 rounded border border-gray-700">Facebook</a>
+              <a href="https://x.com/buyusagmail" target="_blank" rel="noopener noreferrer" aria-label="X Twitter Profile" className="text-gray-400 hover:text-blue-300 transition-colors text-xs font-bold bg-gray-800 px-2 py-1 rounded border border-gray-700">X (Twitter)</a>
+              <a href="https://linkedin.com/company/buyusagmail" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Company Page" className="text-gray-400 hover:text-blue-500 transition-colors text-xs font-bold bg-gray-800 px-2 py-1 rounded border border-gray-700">LinkedIn</a>
+            </div>
           </div>
         </div>
 
