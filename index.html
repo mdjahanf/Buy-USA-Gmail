@@ -147,6 +147,7 @@
       .ssr-h2 { font-size: 1.5rem; font-weight: 800; color: #111827; margin-bottom: 0.5rem; }
       .ssr-h3 { font-size: 1.125rem; font-weight: 700; color: #1f2937; margin-bottom: 0.25rem; }
       .ssr-card-text { font-size: 0.875rem; color: #6b7280; line-height: 1.5; margin-bottom: 1rem; }
+      .ssr-card-link { font-weight: 700; color: #ea4335; }
       .ssr-footer { margin-top: 4rem; padding-top: 2rem; border-top: 1px solid #e5e7eb; text-align: center; font-size: 0.875rem; color: #6b7280; }
       .ssr-footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin-top: 1rem; }
     </style>
@@ -154,6 +155,18 @@
     <title>buyusagmail.com - Best USA Aged &amp; PVA Gmail Accounts</title>
     <script>
       (function() {
+        try {
+          var desc = Object.getOwnPropertyDescriptor(window, 'fetch');
+          if (desc && (!desc.writable || !desc.set)) {
+            var origFetch = window.fetch;
+            Object.defineProperty(window, 'fetch', {
+              get: function() { return origFetch; },
+              set: function(fn) { origFetch = fn; },
+              configurable: true
+            });
+          }
+        } catch (e) {}
+
         try {
           var savedTheme = localStorage.getItem('theme');
           var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -208,32 +221,32 @@
           <div class="ssr-card">
             <h3 class="ssr-h3"><a href="/services/usa-gmail-accounts" class="ssr-nav-link">Aged USA Gmail Accounts</a></h3>
             <p class="ssr-card-text">Aged 2 to 8+ years on clean USA residential IP proxies. Ideal for cold outreach and high trust score operations.</p>
-            <a href="/services/usa-gmail-accounts" class="ssr-nav-link" style="font-weight:700; color:#ea4335;">View USA Accounts &rarr;</a>
+            <a href="/services/usa-gmail-accounts" class="ssr-nav-link ssr-card-link">View USA Accounts &rarr;</a>
           </div>
           <div class="ssr-card">
             <h3 class="ssr-h3"><a href="/services/pva-gmail-accounts" class="ssr-nav-link">Phone Verified (PVA) Gmails</a></h3>
             <p class="ssr-card-text">100% verified using real physical non-VoIP SIM cards. Zero phone verification prompt guaranteed.</p>
-            <a href="/services/pva-gmail-accounts" class="ssr-nav-link" style="font-weight:700; color:#ea4335;">View PVA Accounts &rarr;</a>
+            <a href="/services/pva-gmail-accounts" class="ssr-nav-link ssr-card-link">View PVA Accounts &rarr;</a>
           </div>
           <div class="ssr-card">
             <h3 class="ssr-h3"><a href="/services/aged-gmail-accounts-for-google-ads" class="ssr-nav-link">Google Ads Aged Accounts</a></h3>
             <p class="ssr-card-text">Heavy aged accounts with billing history and clean reputation. Prevents suspicious payment suspensions.</p>
-            <a href="/services/aged-gmail-accounts-for-google-ads" class="ssr-nav-link" style="font-weight:700; color:#ea4335;">View Ads Accounts &rarr;</a>
+            <a href="/services/aged-gmail-accounts-for-google-ads" class="ssr-nav-link ssr-card-link">View Ads Accounts &rarr;</a>
           </div>
           <div class="ssr-card">
             <h3 class="ssr-h3"><a href="/services/aged-gmail-accounts-for-reviews" class="ssr-nav-link">Aged Accounts for GMB Reviews</a></h3>
             <p class="ssr-card-text">High-trust Google Local Guide profiles engineered for 100% permanent review stickiness on Google Maps.</p>
-            <a href="/services/aged-gmail-accounts-for-reviews" class="ssr-nav-link" style="font-weight:700; color:#ea4335;">View Review Accounts &rarr;</a>
+            <a href="/services/aged-gmail-accounts-for-reviews" class="ssr-nav-link ssr-card-link">View Review Accounts &rarr;</a>
           </div>
           <div class="ssr-card">
             <h3 class="ssr-h3"><a href="/services/aged-mix-country-gmail-accounts" class="ssr-nav-link">Aged Mix-Country Gmails</a></h3>
             <p class="ssr-card-text">Aged accounts from tier-1 global countries for international SEO, backlink outreach, and automation.</p>
-            <a href="/services/aged-mix-country-gmail-accounts" class="ssr-nav-link" style="font-weight:700; color:#ea4335;">View Mix Country &rarr;</a>
+            <a href="/services/aged-mix-country-gmail-accounts" class="ssr-nav-link ssr-card-link">View Mix Country &rarr;</a>
           </div>
           <div class="ssr-card">
             <h3 class="ssr-h3"><a href="/services/new-gmail-accounts" class="ssr-nav-link">Fresh PVA Gmail Accounts</a></h3>
             <p class="ssr-card-text">Freshly generated PVA accounts verified with physical SIM cards for lightweight signups and testing.</p>
-            <a href="/services/new-gmail-accounts" class="ssr-nav-link" style="font-weight:700; color:#ea4335;">View Fresh Accounts &rarr;</a>
+            <a href="/services/new-gmail-accounts" class="ssr-nav-link ssr-card-link">View Fresh Accounts &rarr;</a>
           </div>
         </div>
 
