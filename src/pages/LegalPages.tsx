@@ -115,17 +115,16 @@ export const SitemapPage: React.FC<{ onNavigate: (r: any, s?: any) => void; onBa
             ))}
           </ul>
         </div>
-        <div className="space-y-2">
-          <h3 className="text-sm uppercase text-[#FBBC05]">SEO Growth Guides</h3>
-          <ul className="space-y-1.5 font-medium text-[#4285F4]">
-            {(BLOG_POSTS || []).slice(0, 8).map((b) => (
+        <div className="space-y-2 col-span-1 sm:col-span-2 lg:col-span-2">
+          <h3 className="text-sm uppercase text-[#FBBC05]">All 50+ SEO Knowledge & Growth Guides</h3>
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-1.5 font-medium text-[#4285F4]">
+            {(BLOG_POSTS || []).map((b) => (
               <li key={b.id}>
                 <button onClick={() => onNavigate('blog-post', b.slug)} className="text-left hover:underline line-clamp-1">
                   &rarr; {b.title}
                 </button>
               </li>
             ))}
-            <li><button onClick={() => onNavigate('blog')} className="font-bold text-[#EA4335]">&rarr; View All 50+ Guides...</button></li>
           </ul>
         </div>
         <div className="space-y-2">
