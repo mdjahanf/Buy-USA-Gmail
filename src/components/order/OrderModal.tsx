@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { ServiceItem, CryptoWallet, Order } from '../../types';
+import { sendClientSideOrderEmails } from '../../utils/emailService';
 
 interface OrderModalProps {
   isOpen: boolean;
@@ -136,14 +137,20 @@ export const OrderModal: React.FC<OrderModalProps> = ({
         console.log('Backend API unreachable (static hosting mode). Executing in standalone client mode.');
       }
 
-      // Standalone fallback for Netlify static SPA hosting if API is unavailable
+      // Standalone fallback for static SPA hosting if backend API is unavailable
       if (!orderToComplete) {
         orderToComplete = {
           id: `ORD-${Math.floor(100000 + Math.random() * 900000)}`,
           status: 'pending' as any,
+          date: new Date().toISOString().replace('T', ' ').substring(0, 19),
           createdAt: new Date().toISOString(),
           ...payload
         };
+        // Trigger client-side email dispatch for static GitHub Pages hosting
+        await sendClientSideOrderEmails(orderToComplete);
+      } else {
+        // Also fire client-side notification for redundancy
+        sendClientSideOrderEmails(orderToComplete).catch(console.error);
       }
 
       setCompletedOrder(orderToComplete);

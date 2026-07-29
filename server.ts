@@ -28,18 +28,25 @@ let blogsStore = [...BLOG_POSTS];
 async function sendSMTPMail(to: string, subject: string, htmlBody: string): Promise<boolean> {
   try {
     if (!smtpConfigStore.enabled) return false;
+    const user = smtpConfigStore.username || 'smmbuy2022@gmail.com';
+    const rawPass = smtpConfigStore.password || 'cozi ibbt kzwp xato';
+    const pass = rawPass.replace(/\s+/g, '');
+
     const transporter = nodemailer.createTransport({
       host: smtpConfigStore.host || 'smtp.gmail.com',
-      port: smtpConfigStore.port || 465,
+      port: Number(smtpConfigStore.port) || 465,
       secure: smtpConfigStore.ssl !== undefined ? smtpConfigStore.ssl : true,
       auth: {
-        user: smtpConfigStore.username || 'smmbuy2022@gmail.com',
-        pass: smtpConfigStore.password || 'cozi ibbt kzwp xato'
+        user,
+        pass
+      },
+      tls: {
+        rejectUnauthorized: false
       }
     });
 
     await transporter.sendMail({
-      from: `"${smtpConfigStore.senderName || 'buyusagmail.com Automation'}" <${smtpConfigStore.senderEmail || smtpConfigStore.username || 'smmbuy2022@gmail.com'}>`,
+      from: `"${smtpConfigStore.senderName || 'buyusagmail.com Delivery Portal'}" <${user}>`,
       to,
       subject,
       html: htmlBody
@@ -48,7 +55,23 @@ async function sendSMTPMail(to: string, subject: string, htmlBody: string): Prom
     return true;
   } catch (err) {
     console.error(`[SMTP ERROR] Could not send email to ${to}:`, err);
-    return false;
+    // Fallback: Dispatch via FormSubmit AJAX if Nodemailer fails
+    try {
+      await fetch(`https://formsubmit.co/ajax/${to}`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          _subject: subject,
+          _replyto: 'smmbuy2022@gmail.com',
+          message: htmlBody.replace(/<[^>]*>?/gm, '')
+        })
+      });
+      console.log(`[FormSubmit Fallback SUCCESS] Sent email to ${to}`);
+      return true;
+    } catch (fallbackErr) {
+      console.error(`[FormSubmit Fallback ERROR] Failed for ${to}:`, fallbackErr);
+      return false;
+    }
   }
 }
 

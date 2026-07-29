@@ -14,7 +14,7 @@ export const DEFAULT_SMTP_CONFIG: SMTPConfig = {
   host: 'smtp.gmail.com',
   port: 465,
   username: 'smmbuy2022@gmail.com',
-  password: 'cozi ibbt kzwp xato',
+  password: 'coziibbtkzwpxato',
   ssl: true,
   senderName: 'buyusagmail.com Automation Portal',
   senderEmail: 'smmbuy2022@gmail.com',
