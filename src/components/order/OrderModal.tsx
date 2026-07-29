@@ -345,8 +345,9 @@ export const OrderModal: React.FC<OrderModalProps> = ({
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Full Name *</label>
+                  <label htmlFor="order-customer-name" className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Full Name *</label>
                   <input
+                    id="order-customer-name"
                     type="text"
                     required
                     value={customerName}
@@ -358,8 +359,9 @@ export const OrderModal: React.FC<OrderModalProps> = ({
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Email Address * (For Delivery)</label>
+                  <label htmlFor="order-customer-email" className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Email Address * (For Delivery)</label>
                   <input
+                    id="order-customer-email"
                     type="email"
                     required
                     value={email}
@@ -374,8 +376,9 @@ export const OrderModal: React.FC<OrderModalProps> = ({
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Telegram Username (Optional)</label>
+                  <label htmlFor="order-telegram" className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Telegram Username (Optional)</label>
                   <input
+                    id="order-telegram"
                     type="text"
                     value={telegram}
                     onChange={(e) => setTelegram(e.target.value)}
@@ -386,8 +389,9 @@ export const OrderModal: React.FC<OrderModalProps> = ({
                   />
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">WhatsApp Number (Optional)</label>
+                  <label htmlFor="order-whatsapp" className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">WhatsApp Number (Optional)</label>
                   <input
+                    id="order-whatsapp"
                     type="text"
                     value={whatsapp}
                     onChange={(e) => setWhatsapp(e.target.value)}
@@ -401,8 +405,9 @@ export const OrderModal: React.FC<OrderModalProps> = ({
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Country / Jurisdiction</label>
+                  <label htmlFor="order-country" className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Country / Jurisdiction</label>
                   <select
+                    id="order-country"
                     value={country}
                     onChange={(e) => setCountry(e.target.value)}
                     className={`w-full p-3 rounded-xl border text-sm focus:outline-none focus:ring-2 focus:ring-red-500 ${
@@ -421,8 +426,9 @@ export const OrderModal: React.FC<OrderModalProps> = ({
                   </select>
                 </div>
                 <div>
-                  <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Order Notes / Custom Requests (Optional)</label>
+                  <label htmlFor="order-notes" className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">Order Notes / Custom Requests (Optional)</label>
                   <input
+                    id="order-notes"
                     type="text"
                     value={notes}
                     onChange={(e) => setNotes(e.target.value)}
@@ -593,10 +599,11 @@ export const OrderModal: React.FC<OrderModalProps> = ({
               </div>
 
               <div>
-                <label className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">
+                <label htmlFor="order-txid" className="block text-xs font-bold uppercase tracking-wider text-gray-400 mb-1">
                   Crypto Transaction Hash / TxID * (Required)
                 </label>
                 <input
+                  id="order-txid"
                   type="text"
                   required
                   value={transactionId}

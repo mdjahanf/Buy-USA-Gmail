@@ -3,32 +3,40 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { OrderModal } from './components/order/OrderModal';
 import { HomePage } from './pages/HomePage';
-import { ServicesPage } from './pages/ServicesPage';
-import { ServiceDetailPage } from './pages/ServiceDetailPage';
-import { PricingPage } from './pages/PricingPage';
-import { AboutPage } from './pages/AboutPage';
-import { FAQPage } from './pages/FAQPage';
-import { BlogPage } from './pages/BlogPage';
-import { BlogPostPage } from './pages/BlogPostPage';
-import { PaymentMethodsPage } from './pages/PaymentMethodsPage';
-import { ContactPage } from './pages/ContactPage';
-import { 
-  TermsPage, 
-  PrivacyPage, 
-  RefundPage, 
-  DMCAPage, 
-  DisclaimerPage, 
-  SitemapPage, 
-  NotFoundPage 
-} from './pages/LegalPages';
 import { SERVICES_DATA, CRYPTO_WALLETS } from './data/initialData';
 import { BLOG_POSTS } from './data/blogData';
 import { PageRoute, ServiceItem, BlogPost } from './types';
+
+// Code Split non-home pages for ultra-fast initial page loads (< 120KB chunk)
+const ServicesPage = lazy(() => import('./pages/ServicesPage').then(m => ({ default: m.ServicesPage })));
+const ServiceDetailPage = lazy(() => import('./pages/ServiceDetailPage').then(m => ({ default: m.ServiceDetailPage })));
+const PricingPage = lazy(() => import('./pages/PricingPage').then(m => ({ default: m.PricingPage })));
+const AboutPage = lazy(() => import('./pages/AboutPage').then(m => ({ default: m.AboutPage })));
+const FAQPage = lazy(() => import('./pages/FAQPage').then(m => ({ default: m.FAQPage })));
+const BlogPage = lazy(() => import('./pages/BlogPage').then(m => ({ default: m.BlogPage })));
+const BlogPostPage = lazy(() => import('./pages/BlogPostPage').then(m => ({ default: m.BlogPostPage })));
+const PaymentMethodsPage = lazy(() => import('./pages/PaymentMethodsPage').then(m => ({ default: m.PaymentMethodsPage })));
+const ContactPage = lazy(() => import('./pages/ContactPage').then(m => ({ default: m.ContactPage })));
+const TermsPage = lazy(() => import('./pages/LegalPages').then(m => ({ default: m.TermsPage })));
+const PrivacyPage = lazy(() => import('./pages/LegalPages').then(m => ({ default: m.PrivacyPage })));
+const RefundPage = lazy(() => import('./pages/LegalPages').then(m => ({ default: m.RefundPage })));
+const DMCAPage = lazy(() => import('./pages/LegalPages').then(m => ({ default: m.DMCAPage })));
+const DisclaimerPage = lazy(() => import('./pages/LegalPages').then(m => ({ default: m.DisclaimerPage })));
+const SitemapPage = lazy(() => import('./pages/LegalPages').then(m => ({ default: m.SitemapPage })));
+const NotFoundPage = lazy(() => import('./pages/LegalPages').then(m => ({ default: m.NotFoundPage })));
+
+// Lightweight page loading fallback
+const PageLoader = () => (
+  <div className="min-h-[60vh] flex flex-col items-center justify-center p-8 text-center">
+    <div className="w-12 h-12 border-4 border-red-500 border-t-transparent rounded-full animate-spin mb-4"></div>
+    <p className="text-sm font-bold text-gray-500 dark:text-gray-400">Loading buyusagmail.com Verified Content...</p>
+  </div>
+);
 
 export default function App() {
   const [currentRoute, setCurrentRoute] = useState<PageRoute>('home');
@@ -180,7 +188,9 @@ export default function App() {
 
       {/* Main Container */}
       <main className="flex-grow w-full">
-        {renderPageContent()}
+        <Suspense fallback={<PageLoader />}>
+          {renderPageContent()}
+        </Suspense>
       </main>
 
       {/* High Density Layout Footer */}

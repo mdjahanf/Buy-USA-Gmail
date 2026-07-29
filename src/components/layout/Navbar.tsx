@@ -239,28 +239,31 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
           </nav>
 
-          {/* Right actions: Order Button */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            {/* Order Now Button */}
-            <button
-              onClick={() => onOpenOrder()}
-              className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold px-4 py-2 rounded-xl shadow-md shadow-red-500/25 hover:shadow-lg hover:shadow-red-500/35 transition-all transform hover:-translate-y-0.5 flex items-center gap-2 text-sm"
-            >
-              <ShoppingBag className="w-4 h-4" />
-              <span className="hidden sm:inline">Order Accounts</span>
-              <span className="sm:hidden">Order</span>
-            </button>
+            {/* Right actions: Order Button */}
+            <div className="flex items-center gap-2 sm:gap-3">
+              {/* Order Now Button */}
+              <button
+                onClick={() => onOpenOrder()}
+                aria-label="Order Aged USA Gmail Accounts Now"
+                className="bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold px-4 py-2 rounded-xl shadow-md shadow-red-500/25 hover:shadow-lg hover:shadow-red-500/35 transition-all transform hover:-translate-y-0.5 flex items-center gap-2 text-sm min-h-[44px]"
+              >
+                <ShoppingBag className="w-4 h-4" />
+                <span className="hidden sm:inline">Order Accounts</span>
+                <span className="sm:hidden">Order</span>
+              </button>
 
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className={`p-2 rounded-lg md:hidden ${
-                darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-700 hover:bg-gray-100'
-              }`}
-            >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
+              {/* Mobile Menu Button */}
+              <button
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label={mobileMenuOpen ? 'Close Navigation Menu' : 'Open Navigation Menu'}
+                aria-expanded={mobileMenuOpen}
+                className={`p-2.5 rounded-xl md:hidden min-h-[44px] min-w-[44px] flex items-center justify-center ${
+                  darkMode ? 'text-gray-300 hover:bg-gray-800' : 'text-gray-700 hover:bg-gray-100'
+                }`}
+              >
+                {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
         </div>
       </div>
 

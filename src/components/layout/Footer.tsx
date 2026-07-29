@@ -65,17 +65,21 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate, services, darkMode }
               </div>
             ) : (
               <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2">
+                <label htmlFor="footer-newsletter-email" className="sr-only">Work Email Address</label>
                 <input
+                  id="footer-newsletter-email"
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your work email..."
                   required
+                  aria-label="Enter your work email for stock alerts and discounts"
                   className="flex-1 px-4 py-3 rounded-xl bg-gray-800 border border-gray-700 text-white placeholder-gray-500 text-sm focus:outline-none focus:ring-2 focus:ring-red-500"
                 />
                 <button
                   type="submit"
-                  className="px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold rounded-xl shadow-lg shadow-red-500/20 hover:shadow-red-500/30 transition-all flex items-center justify-center gap-2 text-sm whitespace-nowrap"
+                  aria-label="Subscribe to newsletter"
+                  className="px-6 py-3 bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-bold rounded-xl shadow-lg shadow-red-500/20 hover:shadow-red-500/30 transition-all flex items-center justify-center gap-2 text-sm whitespace-nowrap min-h-[44px]"
                 >
                   <span>Subscribe</span>
                   <Send className="w-4 h-4" />

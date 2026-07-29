@@ -9,8 +9,9 @@ export const FloatingContact: React.FC = () => {
     return (
       <button
         onClick={() => setMinimized(false)}
-        className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-red-500 to-blue-500 text-white p-3 rounded-full shadow-2xl hover:scale-105 transition-all flex items-center justify-center"
+        className="fixed bottom-6 right-6 z-50 bg-gradient-to-r from-red-500 to-blue-500 text-white p-3 rounded-full shadow-2xl hover:scale-105 transition-all flex items-center justify-center min-h-[48px] min-w-[48px]"
         title="Open Support Channels"
+        aria-label="Open 24/7 Support Channels"
       >
         <MessageCircle className="w-6 h-6 animate-pulse" />
       </button>
@@ -28,7 +29,7 @@ export const FloatingContact: React.FC = () => {
               Need instant account replacement or bulk rates?
             </p>
           </div>
-          <button onClick={(e) => { e.stopPropagation(); setMinimized(true); }} className="text-gray-400 hover:text-gray-600">
+          <button onClick={(e) => { e.stopPropagation(); setMinimized(true); }} className="text-gray-400 hover:text-gray-600" aria-label="Minimize support prompt">
             <X className="w-4 h-4" />
           </button>
         </div>
@@ -44,7 +45,7 @@ export const FloatingContact: React.FC = () => {
                 24/7 Live Support Desk
               </span>
             </div>
-            <button onClick={() => setOpen(false)} className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
+            <button onClick={() => setOpen(false)} className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200" aria-label="Close support modal">
               <X className="w-4 h-4" />
             </button>
           </div>
@@ -86,8 +87,9 @@ export const FloatingContact: React.FC = () => {
       {/* Launcher Button */}
       <button
         onClick={() => setOpen(!open)}
-        className="w-14 h-14 rounded-full bg-gradient-to-tr from-red-500 via-red-600 to-blue-600 text-white shadow-2xl hover:shadow-red-500/50 flex items-center justify-center transform hover:scale-105 transition-all group relative"
+        className="w-14 h-14 rounded-full bg-gradient-to-tr from-red-500 via-red-600 to-blue-600 text-white shadow-2xl hover:shadow-red-500/50 flex items-center justify-center transform hover:scale-105 transition-all group relative min-h-[56px] min-w-[56px]"
         title="Live Support Chat"
+        aria-label="Toggle Live Support Chat Desk"
       >
         <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-green-500 border-2 border-white dark:border-gray-900 animate-pulse"></span>
         {open ? <X className="w-6 h-6" /> : <MessageCircle className="w-6 h-6 group-hover:scale-110 transition-transform" />}
