@@ -7,6 +7,7 @@ import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { Navbar } from './components/layout/Navbar';
 import { Footer } from './components/layout/Footer';
 import { OrderModal } from './components/order/OrderModal';
+import { FloatingContact } from './components/common/FloatingContact';
 import { HomePage } from './pages/HomePage';
 import { SERVICES_DATA, CRYPTO_WALLETS } from './data/initialData';
 import { BLOG_POSTS } from './data/blogData';
@@ -199,6 +200,9 @@ export default function App() {
         services={SERVICES_DATA}
         darkMode={darkMode}
       />
+
+      {/* Floating Chat Buttons (Telegram & WhatsApp bottom right) */}
+      <FloatingContact />
 
       {/* Order Modal */}
       {orderModalOpen && (
